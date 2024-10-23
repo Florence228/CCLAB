@@ -1,14 +1,21 @@
 let phase = 0;
+let earthPhase = false;
+
 let earthX, earthY;
+let earthDia = 300;
+
 let creatureX, creatureY;
 let creatureW, creatureH;
+
 let angle = 0;
-let earthDia = 300;
-let orbitX, orbitY;
+let ballX, ballY;
+let shrinkFactor = 1;
+
+let t = 0;
 
 function setup() {
   let canvas = createCanvas(800, 500);
-  canvas.parent("p5-canvas-container");
+   canvas.parent("p5-canvas-container");
   angleMode(DEGREES);
 
   earthX = width / 2;
@@ -18,34 +25,52 @@ function setup() {
   creatureY = 450;
   creatureW = 0;
   creatureH = 0;
+
+  ballX = width / 2;
+  ballY = height - 50;
 }
 
 function draw() {
-  ////// Change Phase //////
-  if (keyIsPressed) {
-    if (key == "3") {
-     phase = 0;
-    } else if (key == "1") {
-      phase = 1;
-    } else if (key == "2") {
-      phase = 2;
-    }
-  }
-  
   ///// Phase 0 /////
   if (phase == 0) {
     // intro
     background(49, 13, 96);
+    let numOfIterations = random(50, 150);
+    stroke(random(255), random(255), random(255));
+    for (let i = 0; i < numOfIterations; i++) {
+      let x = random(width);
+      let y = random(height);
+      strokeWeight(random(1, 10));
+      line(
+        x + random(-20, 20),
+        y + random(-20, 20),
+        x + random(-20, 20),
+        y + random(-20, 20)
+      );
+    }
     stroke(255);
     strokeWeight(5);
-    textSize(40);
-    text("Press 1 to Begin", 250, 100);
-    strokeWeight(4);
+    fill(random(255));
+    textSize(60);
+    text("DiPortal-Fn3", 225, 200);
     textSize(30);
-    text("After entering the page, press 'b' to generate our planet", 40, 180)
-    text("Then, press the mouse to see what happens",90,240)
-    textSize(20)
-    strokeWeight(2);          text("CAUTION!CAUTION!CAUTION!CAUTION!CAUTION!CAUTION!CAUTION!CAUTION!",15, 480)
+    text("Press to Begin", 300, 250);
+    textSize(20);
+    strokeWeight(2);
+    text(
+      "CAUTION!CAUTION!CAUTION!CAUTION!CAUTION!CAUTION!CAUTION!CAUTION!",
+      15,
+      480
+    );
+    let freq = frameCount * 30;
+    let sinValue = sin(freq);
+    let circleDia = map(sinValue, -1, 1, 50, 80);
+    let r = map(mouseX, 0, width, 255, 0);
+    let g = map(mouseX, 0, width, 255, 0);
+    let b = map(mouseX, 0, height, 0, 255);
+    noStroke();
+    fill(r, g, b);
+    circle(mouseX, mouseY, circleDia);
   }
 
   ///// Phase 1 /////
@@ -67,48 +92,73 @@ function draw() {
           backY + random(-20, 20)
         );
       }
-
-      //Rotation
-      angle += 1;
     }
+    ////////////// DISPLAY /////////////////
+
+    drawGround();
+    drawCreature(earthX, earthY, 650);
+
+    drawWhirlpool();
+    if (earthPhase) {
+      drawNoiseTexture(earthX, earthY, earthDia);
+      drawFlame(earthX, earthY, earthDia);
+      drawEarth(earthX, earthY, earthDia);
+    }
+
+    angle += 0.05;
+
+    //  console.log(earthY);
+
     ///// CHECK /////
     //Sink the Earth gradually
     if (mouseIsPressed) {
       if (earthY < height + 100) {
-        earthY += 1.2; //Speed
+        earthY += 1.1; //Speed
+      }
+      if (earthY > 475) {
+        background(0); // one time background clearing!
+        phase = 2;
+        // reset
+        earthPhase = false;
+        earthY = 160;
+        earthDia = 300;
       }
     }
-
-    ////////////// DISPLAY /////////////////
-
-    drawGround();
-    if (key == "b"){
-       drawEarth(earthX, earthY, earthX, earthY);
-       drawOrbit(earthX, earthY);
-    }
-    drawCreature(earthX, earthY);
-    
-    //  console.log(earthY);
   }
 
   ///// Phase 2 /////
   else if (phase == 2) {
-    // draw 2d paper
-    background(255, 255, 0);
-    fill(8, 108, 98);
-    circle(width / 2, height / 2, earthDia);
+    // draw Noise Background
+    for (let x = 0; x < width; x += 10) {
+      for (let y = 0; y < height; y += 10) {
+        let noiseFactor = noise(x * 0.01, y * 0.01, t);
+        let colorR = map(noiseFactor, 0, 1, 100, 255);
+        let colorG = map(noiseFactor, 0, 1, 100, 50);
+        let colorB = map(noiseFactor, 0, 1, 50, 0);
+        fill(colorR, colorG, colorB, 10);
+        rect(x, y, 10, 10);
+      }
+    }
+    t += 0.02;
+    translate(width / 2, height / 2);
+    rotate(angle);
+
+    let r = 255;
+    let g = map(sin(frameCount * 2.0), -1, 1, 0, 200);
+    let b = 0;
+    let a = map(sin(frameCount * 1.3), -1, 1, 150, 200);
+
+    fill(r, g, b, a);
+    circle(10, 0, earthDia);
+    angle += 5;
+    if (mouseIsPressed) {
+    circle(0, 100, 150);
+    }
   }
 }
 
-function drawCreature() {
-  fill(0);
-  creatureW = map(earthY, 290, height, 0, 650, true);
-  creatureH = map(earthY, 290, height, 0, 80, true);
-  ellipse(creatureX, creatureY, creatureW, creatureH);
-}
-
 function drawGround() {
-  fill(6, 16, 90);
+  fill(6, 16, 100);
   noStroke();
   beginShape();
   vertex(0, height);
@@ -118,45 +168,104 @@ function drawGround() {
   endShape(CLOSE);
 }
 
-function drawEarth(x, y, x1, y1,r1,r2) {
+function drawWhirlpool() {
   push();
-  translate(x, y);
-  noStroke();
-  fill(8, 108, 98);
-  ellipse(0, 0, earthDia); //Earth
-  earthDia = map(earthY, 290, height - 30, 300, 0, true);
-  pop();
-  
-  push();
-  translate(x1, y1);
-  rotate(angle);
-  let flameX,flameY;
-  for (let i = 0; i < 360; i += 10) {
-    if(earthY<=height-30){
-    if (earthY >= 290){
-    flameX = sin(i) * map(earthY, 290, height-30, 150,0);
-    flameY = cos(i) * map(earthY, 290, height-30, 150,0);
-    
-  }else{
-    flameX = sin(i) * 150;
-    flameY = cos(i) * 150;
+  translate(400, 450);
+
+  scale(5.1, 0.9);
+
+  for (let i = 0; i < 50; i++) {
+    rotate(frameCount * 0.5 + i);
+    let whirlRadius = map(i, 0, 50, 60, 10);
+    fill(0, map(i, 0, 50, 50, 100));
+    ellipse(whirlRadius, 0, whirlRadius / 5, whirlRadius / 5);
   }
-    fill(255, random(0, 200), 0, random(100, 255));
-    ellipse(flameX, flameY, random(10, 30), random(30, 50));
-}}
   pop();
 }
 
-function drawOrbit(x, y) {
+function drawCreature(earthX, earthY, dia) {
+  fill(0);
+  creatureW = map(earthY, 290, height, 0, 650, true);
+  creatureH = map(earthY, 290, height, 0, 120, true);
+  noStroke();
+  for (let i = 0; i < 5; i++) {
+    let newDia = map(i, 0, 4, dia, 5);
+    let y = map(i, 0, 4, 0, 10);
+    fill(80, 130);
+    ellipse(creatureX, creatureY, newDia, newDia * 0.2);
+    fill(0);
+    ellipse(creatureX, creatureY, creatureW, creatureH);
+  }
+}
+
+function drawEarth(x, y, dia) {
+  earthDia = map(earthY, 290, height - 30, 300, 0, true);
   push();
   translate(x, y);
-  for (let k = 0; k < 12; k++) {
-    let theta = (TWO_PI / 12) * k + angle;
-    orbitX = cos(theta) * 250;
-    orbitY = sin(theta) * 250;
-    fill(72, 91, 62);
-    circle(orbitX, orbitY, 40);
-  }
-  angle += 0.02;
+  noStroke();
+  fill(255, random(0, 200), 0, random(150, 255));
+  circle(0, 0, dia); //Earth
+  circle(random(-30, 30), random(-30, 30), dia / 1.5);
+  // circle(random(0,40),random(0,5),dia / 1.5); //Inside
   pop();
+}
+
+function drawFlame(x, y, dia) {
+  let rad = dia / 2;
+  push();
+  translate(x, y);
+  rotate(random(360));
+  let flameX, flameY;
+  for (let i = 0; i < 360; i += 10) {
+    if (earthY <= height - 30) {
+      if (earthY >= 290) {
+        flameX = sin(i) * rad;
+        flameY = cos(i) * rad;
+      } else {
+        flameX = sin(i) * 150;
+        flameY = cos(i) * 150;
+      }
+      fill(255, random(0, 200), 0, random(100, 255));
+      ellipse(flameX, flameY, random(10, 30), random(30, 50));
+    }
+  }
+  pop();
+}
+
+function drawNoiseTexture(x, y, dia) {
+  push();
+  translate(x, y);
+  for (let x = -earthDia / 2; x < earthDia / 2; x += 5) {
+    for (let y = -earthDia / 2; y < earthDia / 2; y += 5) {
+      let d = dist(x, y, 0, 0);
+      if (d < earthDia / 2) {
+        let noiseVal = noise(x * 0.03, y * 0.03);
+        ellipse(x, y, 5, 5);
+      }
+    }
+  }
+  pop();
+}
+
+function mousePressed() {
+  if (phase == 0) {
+    phase = 1;
+  } else if (phase == 1) {
+    earthPhase = true;
+  }
+}
+
+function keyPressed() {
+  if (key == "3") {
+    phase = 0;
+  } else if (key == "1") {
+    phase = 1;
+  } else if (key == "2") {
+    phase = 2;
+  } else if (key == " ") {
+    phase = phase + 1;
+    if (phase == 3) {
+      phase = 0;
+    }
+  }
 }
