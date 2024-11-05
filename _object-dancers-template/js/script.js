@@ -27,16 +27,16 @@ function draw() {
   drawFloor(); // for reference only
 
   dancer.update();
-
   dancer.display();
 }
 
 // You only code inside this class.
 // Start by giving the dancer your name, e.g. LeonDancer.
 class DancingDog {
-   constructor(startX, startY) {
+  constructor(startX, startY) {
     this.x = startX;
     this.y = startY;
+    // add properties for your dancer here:
     this.size = 40;
     this.xMove = 0;
     this.xSpeed = 0.05;
@@ -44,80 +44,82 @@ class DancingDog {
     this.ySpeed = 0.1;
     this.armAngle = 0;
     this.armSpeed = 0.1;
-    // add properties for your dancer here:
-    //..
-    //..
-    //..
   }
-    update() {
+  update() {
     // update properties here to achieve
     // your dancer's desired moves and behaviour
-    dance() {
-      this.xMove = sin(frameCount * this.xSpeed) * 20;
-    }
-    
-    bounce() {
-      this.yMove = cos(frameCount * this.ySpeed) * 20;
-    }
+    this.drawDance();
+    this.drawBounce();
+    this.drawArm();
+  }
+
+  drawDance(){
+    this.xMove = sin(frameCount * this.xSpeed) * 20;
+  }
   
-    arm() {
-      this.armAngle = sin(frameCount * this.armSpeed) * PI / 16 ;
-      this.armAngleTwo = cos(frameCount * this.armSpeed) * PI / 16 ;
-    }
-   }
+  drawBounce(){
+    this.yMove = cos(frameCount * this.ySpeed) * 20;
+  }
+
+  drawArm(){
+    this.armAngle = sin(frameCount * this.armSpeed) * PI / 16 ;
+    this.armAngleTwo = cos(frameCount * this.armSpeed) * PI / 16 ;
+  }
+
   display() {
     // the push and pop, along with the translate 
     // places your whole dancer object at this.x and this.y.
     // you may change its position on line 19 to see the effect.
-    push();
-    translate(this.x, this.y);
+    // push();
+    // translate(this.x, this.y);
 
     // ******** //
     // ⬇️ draw your dancer from here ⬇️
-    //Arm
-    push();
-    translate(this.x + this.xMove - this.size / 2, this.y + this.yMove + 10);
-    rotate(this.armAngle);
-   fill(192, 217, 166);
-   rect(25, -15, 30, 8);
-   fill(29, 84, 78);
-   circle(55, -12, 13)  
-   rotate(this.armAngleTwo);
-    fill(192, 217, 166);
-    rect(-20, -15, 30, 8);
-    fill(29, 84, 78);
-   circle(-20, -12, 13);
-   pop();
-
-   //Body
-    fill(192, 217, 166);
-   ellipse(this.x + this.xMove, this.y + this.yMove, this.size, this.size * 0.6);
-    fill(29, 84, 78);
-    ellipse(this.x + this.xMove, this.y + this.yMove, this.size / 1.7, this.size * 0.6);
-
-    //Head
-    fill(192, 217, 166);
-   ellipse(this.x + this.xMove, this.y - this.size / 2 + this.yMove, this.size * 0.6, this.size * 0.6);
-
-    //Ears
-   fill(29, 84, 78);
-    ellipse(this.x + this.xMove - 11, this.y - this.size / 2 - 7 + this.yMove, 10, 20);
-    ellipse(this.x + this.xMove + 11, this.y - this.size / 2 - 7 + this.yMove, 10, 20);
-
-    //Eyes
-   fill(255);
-    circle(this.x + this.xMove - 5, this.y - this.size / 2 - 5 + this.yMove, 7);
-   circle(this.x + this.xMove + 5, this.y - this.size / 2 - 5 + this.yMove, 7);
-    fill(0);
-    circle(this.x + this.xMove - 5, this.y - this.size / 2 - 5 + this.yMove, 2);
-   circle(this.x + this.xMove + 5, this.y - this.size / 2 - 5 + this.yMove, 2);
-
-   //Mouth
-   noFill();
-    stroke(0);
-    arc(this.x + this.xMove, this.y - this.size / 2 + 5 + this.yMove, 10, 5, 0, PI);
-   noStroke();
-   }
+     //Arm
+     push();
+     translate(this.x + this.xMove - this.size / 2, this.y + this.yMove + 10);
+     rotate(this.armAngle);
+     fill(192, 217, 166);
+     rect(25, -15, 30, 8);
+     fill(29, 84, 78);
+     circle(55, -12, 13)
+     rotate(this.armAngleTwo);
+     fill(192, 217, 166);
+     rect(-20, -15, 30, 8);
+     fill(29, 84, 78);
+     circle(-20, -12, 13);
+     pop();
+     
+     //Body
+     fill(192, 217, 166);
+     ellipse(this.x + this.xMove, this.y + this.yMove, this.size, this.size * 0.6);
+     fill(29, 84, 78);
+     ellipse(this.x + this.xMove, this.y + this.yMove, this.size / 1.7, this.size * 0.6);
+ 
+     //Head
+     fill(192, 217, 166);
+     ellipse(this.x + this.xMove, this.y - this.size / 2 + this.yMove, this.size * 0.6, this.size * 0.6);
+ 
+     //Ears
+     fill(29, 84, 78);
+     ellipse(this.x + this.xMove - 11, this.y - this.size / 2 - 7 + this.yMove, 10, 20);
+     ellipse(this.x + this.xMove + 11, this.y - this.size / 2 - 7 + this.yMove, 10, 20);
+ 
+     //Eyes
+     fill(255);
+     circle(this.x + this.xMove - 5, this.y - this.size / 2 - 5 + this.yMove, 7);
+     circle(this.x + this.xMove + 5, this.y - this.size / 2 - 5 + this.yMove, 7);
+     fill(0);
+     circle(this.x + this.xMove - 5, this.y - this.size / 2 - 5 + this.yMove, 2);
+     circle(this.x + this.xMove + 5, this.y - this.size / 2 - 5 + this.yMove, 2);
+ 
+     //Mouth
+     noFill();
+     stroke(0);
+     arc(this.x + this.xMove, this.y - this.size / 2 + 5 + this.yMove, 10, 5, 0, PI);
+     noStroke();
+      }
+     }
 
     // ⬆️ draw your dancer above ⬆️
     // ******** //
@@ -130,9 +132,7 @@ class DancingDog {
     // comment it out or delete it eventually.
     // this.drawReferenceShapes()
 
-    pop();
-   }
-
+    // pop();
   // drawReferenceShapes() {
   //   noFill();
   //   stroke(255, 0, 0);
@@ -143,6 +143,7 @@ class DancingDog {
   //   fill(255);
   //   stroke(0);
   // }
+
 
 
 /*
