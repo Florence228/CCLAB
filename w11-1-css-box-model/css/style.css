@@ -1,0 +1,62 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+h1 {
+  background-color: aquamarine;
+  color: blueviolet;
+  margin-bottom: 20px;
+}
+
+p {
+  font-family: sans-serif
+}
+
+
+h3 {
+  margin: 20px 0;
+}
+
+
+.box {
+  background-color: aqua;
+  width: 50%;
+  height: 200px;
+  margin: 50px;
+  padding: 10px;
+  /* border: 1px dashed; */
+
+  border: 10px solid gold;
+
+
+  position: static;
+  left: 100px;
+  top: 50px;
+  /* //对应顶点// */
+
+}
+
+.wrapper {
+  background-color: chocolate;
+  width: 500px;
+  margin: 100px auto;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-highlight {
+  background-color: chartreuse;
+}
+
+.text-code {
+  background-color: beige;
+  font-family: monospace;
+}

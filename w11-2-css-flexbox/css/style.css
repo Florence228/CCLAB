@@ -1,0 +1,91 @@
+/* 1. Remove default margins */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+body {
+    font-family: "nunito Sans", sans-serif;
+}
+
+/* 2. Apply random background colors */
+.wrapper {
+    max-width: 800px;
+    margin: 100px auto;
+}
+
+.title-container {
+    background-color: aqua;
+    height: 200px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-box {
+    background-color: chartreuse;
+    width: 400px;
+}
+
+.nav-container {
+    background-color: bisque;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-menu {
+    margin: 0 30px;
+}
+
+.flexbox-container {
+    background-color: darkkhaki;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.box {
+    background-color: blueviolet;
+    width: 150px;
+    height: 120px;
+
+    margin: 20px;
+}
+
+.floating-box {
+    background-color: aqua;
+    width: 200px;
+    height: 150px;
+    position: absolute;
+    right: 100px;
+    top: 50px;
+}
+
+#special-box {
+    background-color: chocolate;
+    /* display: none; */
+    /* visibility: hidden; */
+}
+
+/* Explore Flexbox:
+justify-content
+align-items
+flex-wrap
+align-content
+flex-flow
+flex-direction
+*/

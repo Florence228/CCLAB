@@ -1,0 +1,92 @@
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    /* padding: 0; */
+}
+
+canvas {
+    display: block;
+}
+
+body {
+    font-family: "Dancing Script", cursive;
+    /* font-optical-sizing: auto; */
+}
+
+.whole-background {
+    background-color: yellowgreen;
+    width: 100vw;
+    height: 800px;
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.title-box {
+    text-align: center;
+    font-size: larger;
+    margin-left: 20px;
+}
+
+.first-flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.box {
+    background-color: wheat;
+    width: 170px;
+    height: 120px;
+    margin: 10px;
+}
+
+.main-title-container {
+    font-size: 25px;
+    margin-left: 100px;
+    margin-right: 50px;
+}
+
+.box-background {
+    background-color: deepskyblue;
+    width: 100vw;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.garden-box {
+    background-color: saddlebrown;
+    width: 100vw;
+    height: 400px;
+    margin-top: 350px;
+}
+
+.column-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.column-function {
+    background-color: mistyrose;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    margin-top: 150px;
+}
