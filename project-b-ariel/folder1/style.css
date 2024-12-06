@@ -1,0 +1,68 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: ivory;
+}
+
+
+.title-container {
+    color: rgb(114, 201, 158);
+    width: 80%;
+    transform: translate(10%, 10%);
+    text-align: center;
+
+}
+
+.canvaContainer {
+    width: 80%;
+    transform: translate(10%, 10%);
+    text-align: center;
+}
+
+.h1 {
+    text-align: center;
+}
+
+canvas {
+    display: block;
+
+}
+
+#p5-canvas-container {
+    background-color: whiteiv;
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+
+    flex-direction: row;
+}
+
+/* .circle { */
+/* background-image: url(tree.png); */
+/* background-color: blue;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+} */
+
+@media (max-width: 800px) {
+    #p5-canvas-container {
+        flex-direction: column;
+        max-width: 800px;
+    }
+
+    .intro {
+        order: 2;
+    }
+
+    #p5-canvas-container {
+        order: 1
+    }
+
+    .credits {
+        order: 3
+    }
+}
