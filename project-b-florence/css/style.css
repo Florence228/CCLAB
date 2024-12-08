@@ -13,12 +13,12 @@ p {
 
 a {
     text-decoration: none;
-    color: rgb(84, 167, 255);
+    color: rgb(255, 62, 85);
 }
 
 a:hover {
     /* text-decoration: underline; */
-    color: coral;
+    color: rgb(138, 197, 255);
 }
 
 canvas {
@@ -68,7 +68,7 @@ body {
 }
 
 .box {
-    background-color: wheat;
+    background-color: rgba(195, 255, 214, 0.6);
     width: 170px;
     height: 170px;
     margin: 10px;
@@ -76,7 +76,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 30px;
+    border-radius: 20px;
 }
 
 .box h1 {
@@ -161,6 +161,11 @@ body {
     height: 350px;
 }
 
+.align-box-image {
+    width: 100px;
+    height: 100px;
+}
+
 .center-box {
     display: flex;
     flex-wrap: wrap;
@@ -169,12 +174,206 @@ body {
     align-content: center;
 }
 
-.box-back-link {
-    margin-left: 20px;
+#box-back-link {
+    position: absolute;
+    top: 30px;
+    left: 30px;
     font-size: 25px;
 }
 
-.end-page-link {
-    margin-left: 1230px;
-    font-size: 25px;
+#end-page-link {
+    position: absolute;
+    top: 430px;
+    right: 50px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#dead-page-link {
+    position: absolute;
+    top: 430px;
+    right: 50px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#pop-up-text-box {
+    /* background-color: azure; */
+    width: 100%;
+    height: 30px;
+
+    position: absolute;
+    bottom: 150px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+.end-spring-background {
+    background-color: yellowgreen;
+    width: 100vw;
+    height: 800px;
+    background-image: url('../assets/spring-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.tree1-image-container button {
+    margin: 10px;
+    background-color: rgba(255, 167, 243, 0.6);
+    border: 0;
+    border-radius: 20px;
+}
+
+.end1-title-container {
+    font-size: 30px;
+    background-color: aliceblue;
+    height: 80px;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 50px;
+    margin-left: 30px;
+    color: pink;
+    font-family: "Dancing Script", cursive;
+}
+
+.end-summer-background {
+    background-color: yellowgreen;
+    width: 100vw;
+    height: 800px;
+    background-image: url('../assets/summer-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.tree2-image-container button {
+    margin: 10px;
+    background-color: rgba(206, 255, 226, 0.6);
+    border: 0;
+    border-radius: 20px;
+}
+
+.end2-title-container {
+    font-size: 30px;
+    /* background-color: aliceblue; */
+    height: 80px;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 50px;
+    margin-left: 30px;
+    color: rgb(91, 218, 167);
+    font-family: "Dancing Script", cursive;
+}
+
+.end-autumn-background {
+    background-color: yellowgreen;
+    width: 100vw;
+    height: 800px;
+    background-image: url('../assets/autumn-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.tree3-image-container button {
+    margin: 10px;
+    background-color: rgba(255, 188, 132, 0.8);
+    border: 0;
+    border-radius: 20px;
+}
+
+.end3-title-container {
+    font-size: 30px;
+    /* background-color: aliceblue; */
+    height: 80px;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 50px;
+    margin-left: 30px;
+    color: rgb(255, 251, 237);
+    font-family: "Dancing Script", cursive;
+}
+
+.end-winter-background {
+    background-color: yellowgreen;
+    width: 100vw;
+    height: 800px;
+    background-image: url('../assets/winter-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.tree4-image-container button {
+    margin: 10px;
+    background-color: rgba(166, 239, 255, 0.6);
+    border: 0;
+    border-radius: 20px;
+}
+
+.end4-title-container {
+    font-size: 30px;
+    /* background-color: aliceblue; */
+    height: 80px;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 50px;
+    margin-left: 30px;
+    color: rgb(2, 19, 208);
+    font-family: "Dancing Script", cursive;
+}
+
+.end-deadtree-background {
+    background-color: yellowgreen;
+    width: 100vw;
+    height: 800px;
+    background-image: url('../assets/deadtree-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.deadtree-image-container button {
+    margin: 10px;
+    background-color: rgba(145, 186, 208, 0.8);
+    border: 0;
+    border-radius: 20px;
+}
+
+.deadtree-title-container {
+    font-size: 30px;
+    height: 80px;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 50px;
+    margin-left: 30px;
+    color: rgb(211, 218, 0);
+    font-family: "Dancing Script", cursive;
 }

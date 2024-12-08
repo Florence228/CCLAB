@@ -2,6 +2,10 @@ let img;
 let mode = 0;
 let imageStep = 0;
 
+let nextButton = document.getElementById('end-page-link');
+let nextButton1 = document.getElementById('dead-page-link');
+nextButton.style.display = "none";
+nextButton1.style.display = "none";
 
 function preload() {
   img1 = loadImage('assets/summer-phase1.jpg');
@@ -10,7 +14,7 @@ function preload() {
   img4 = loadImage('assets/summer-phase4.jpg');
   img5 = loadImage('assets/summer-phase5.jpg');
   img6 = loadImage('assets/summer-phase6.jpg');
-  img7 = loadImage('assets/tree2.png');
+  img7 = loadImage('assets/tree1.jpeg');
   img8 = loadImage('assets/water.jpg');
   img9 = loadImage('assets/sunshine.jpg');
   img10 = loadImage('assets/fertilizer.jpg');
@@ -49,7 +53,12 @@ function draw() {
     image(img6, 280, 25);
   } else if (imageStep === 7) {
     img7.resize(260, 260);
-    image(img7, 280, 0);
+    image(img7, 270, 0);
+    nextButton.style.display = "block";
+  } else if (imageStep == 8) {
+    img12.resize(300, 130);
+    image(img12, 240, 190);
+    nextButton1.style.display = "block";
   }
 
   imageMode(CENTER);
@@ -119,8 +128,8 @@ function draw() {
       mouseX < 450
       && mouseY > 200
       && mouseY < 300) {
-      img12.resize(300, 130);
-      image(img12, 350, 250);
+
+      imageStep = 8;
     }
   }
 }

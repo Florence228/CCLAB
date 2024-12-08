@@ -19,16 +19,22 @@
 </head>
 
 <body>
-
+  <audio autoplay loop>
+    <source src="assets/bgm2.mp3" type="audio/mpeg">
+  </audio>
   <div class="box-background">
     <div class="box-wrapper">
 
-      <div class="box-back-link">
+      <div id="box-back-link">
         <a href="page2.html">Go Back and choose again!</a>
       </div>
-      <div class="end-page-link">
-        <a href="end1.html">Now go and check it out!</a>
+      <div id="end-page-link">
+        <a href="spring.html">✨Now go and check it out!✨</a>
       </div>
+      <div id="dead-page-link">
+        <a href="dead.html">OOPS...Seems dead...😭</a>
+      </div>
+
       <div class="column-container">
         <button class="column-button" onclick="applySeed()">
           <h1>Plant! 🪱</h1>
@@ -48,7 +54,10 @@
       </div>
       <!-- Title! -->
       <div class="page-title-box">
-        <h1>Futuristic Garden</h1>
+        <h2>Futuristic Garden</h2>
+        <h3>Plant first. Do the middle three in sequence, hover over the plant, and do it again! "Water, Sunshine,
+          Fertilizer,
+          Water, Sunshine, Fertilizer!" 🫘</h3>
       </div>
 
       <div class="garden-box">
@@ -60,7 +69,7 @@
 
   </div>
 
-  <script src="js/box1.js"></script>
+  <script src="js/spring.js"></script>
 </body>
 
 </html>
