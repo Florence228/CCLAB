@@ -11,9 +11,9 @@ function preload() {
   img1 = loadImage('assets/summer-phase1.jpg');
   img2 = loadImage('assets/summer-phase2.jpg');
   img3 = loadImage('assets/summer-phase3.jpg');
-  img4 = loadImage('assets/summer-phase4.jpg');
-  img5 = loadImage('assets/summer-phase5.jpg');
-  img6 = loadImage('assets/summer-phase6.jpg');
+  img4 = loadImage('assets/winter-phase4.jpg');
+  img5 = loadImage('assets/winter-phase5.jpg');
+  img6 = loadImage('assets/winter-phase6.jpg');
   img7 = loadImage('assets/tree4.jpg');
   img8 = loadImage('assets/water.jpg');
   img9 = loadImage('assets/sunshine.jpg');

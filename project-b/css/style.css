@@ -67,6 +67,10 @@ body {
     margin-left: 70px;
 }
 
+.first-flexbox:hover {
+    background-image: url('../assets/summer-phase4.jpg');
+}
+
 .box {
     background-color: rgba(195, 255, 214, 0.6);
     width: 170px;
